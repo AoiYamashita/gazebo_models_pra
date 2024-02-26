@@ -15,6 +15,7 @@
                 <geometry>
                     <mesh>
                         <uri>model://pioneer2dx/meshes/chassis.dae</uri>
+                        <scale>0.9 0.5 0.5</scale>
                     </mesh>
                 </geometry>
             </visual>
@@ -105,6 +106,22 @@
         </include>
         <joint name="hokuyo_joint" type="revolute">
             <child>hokuyo::link</child>
+            <parent>chassis</parent>
+            <axis>
+                <xyz>0 0 1</xyz>
+                <limit>
+                    <upper>0</upper>
+                    <lower>0</lower>
+                </limit>
+            </axis>
+        </joint>
+
+        <include>
+            <uri>model://camera</uri>
+            <pose>0.2 0 0.3 0 0 0</pose>
+        </include>
+        <joint name="camera_joint" type="revolute">
+            <child>camera::link</child>
             <parent>chassis</parent>
             <axis>
                 <xyz>0 0 1</xyz>
